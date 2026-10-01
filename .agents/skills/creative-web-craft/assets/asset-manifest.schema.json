@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creative Web Asset Manifest",
+  "type": "object",
+  "required": ["assets"],
+  "properties": {
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "path", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "type": {
+            "enum": ["image", "image-sequence", "video", "audio", "font", "texture", "model"]
+          },
+          "path": { "type": "string" },
+          "status": { "enum": ["planned", "ready"] },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "frameCount": { "type": "integer", "minimum": 1 },
+          "focalPoint": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "maximum": 1 },
+              "y": { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            "required": ["x", "y"]
+          },
+          "informative": { "type": "boolean" },
+          "alt": { "type": "string" },
+          "fallback": { "type": "string" },
+          "license": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}
+

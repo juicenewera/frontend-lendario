@@ -1,0 +1,7 @@
+interface:
+  display_name: "Creative Web Craft"
+  short_description: "Direção e engenharia web criativa premium"
+  default_prompt: "Use $creative-web-craft para projetar, implementar ou auditar uma experiência web premium."
+
+policy:
+  allow_implicit_invocation: true

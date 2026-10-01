@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creative Web Brief",
+  "type": "object",
+  "required": ["creativeThesis", "experienceTier", "audience", "primaryAction", "budgets", "fallbacks"],
+  "properties": {
+    "creativeThesis": { "type": "string", "minLength": 12 },
+    "experienceTier": { "enum": ["baseline", "enhanced", "cinematic"] },
+    "audience": { "type": "string" },
+    "primaryAction": { "type": "string" },
+    "signatureInteraction": { "type": "string" },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "purpose"],
+        "properties": {
+          "name": { "type": "string" },
+          "purpose": { "type": "string" },
+          "content": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "required": ["lcpMs", "inpMs", "cls"],
+      "properties": {
+        "lcpMs": { "type": "number", "maximum": 2500 },
+        "inpMs": { "type": "number", "maximum": 200 },
+        "cls": { "type": "number", "maximum": 0.1 },
+        "maxDecodedMediaMiB": { "type": "number", "minimum": 1 }
+      }
+    },
+    "fallbacks": {
+      "type": "object",
+      "required": ["reducedMotion", "noWebGL", "slowNetwork"],
+      "properties": {
+        "reducedMotion": { "type": "string" },
+        "noWebGL": { "type": "string" },
+        "slowNetwork": { "type": "string" }
+      }
+    },
+    "openDecisions": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
+
